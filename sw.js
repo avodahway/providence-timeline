@@ -1,7 +1,9 @@
-const CACHE_NAME = 'providence-timeline-v2-redesign-shell';
+const CACHE_NAME = 'providence-timeline-v2-privacy-shell';
 const APP_SHELL = [
   '/',
   '/index.html',
+  '/privacy.html',
+  '/account-deletion.html',
   '/manifest.webmanifest',
   '/icons/providence-icon.svg'
 ];
