@@ -1,0 +1,34 @@
+create table if not exists public.entries_v2 (
+  id uuid primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  original_date date not null,
+  title text not null,
+  original_text text not null,
+  season text not null,
+  story_arc text,
+  tags text[] not null default '{}',
+  people text[] not null default '{}',
+  location text,
+  scripture text,
+  reflection_date date,
+  reflection_text text,
+  connections jsonb not null default '[]'::jsonb,
+  created_at timestamptz not null default now()
+);
+
+alter table public.entries_v2 enable row level security;
+
+drop policy if exists "Users can read their own v2 entries" on public.entries_v2;
+create policy "Users can read their own v2 entries" on public.entries_v2 for select to authenticated using (auth.uid() = user_id);
+
+drop policy if exists "Users can create their own v2 entries" on public.entries_v2;
+create policy "Users can create their own v2 entries" on public.entries_v2 for insert to authenticated with check (auth.uid() = user_id);
+
+drop policy if exists "Users can update their own v2 entries" on public.entries_v2;
+create policy "Users can update their own v2 entries" on public.entries_v2 for update to authenticated using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+drop policy if exists "Users can delete their own v2 entries" on public.entries_v2;
+create policy "Users can delete their own v2 entries" on public.entries_v2 for delete to authenticated using (auth.uid() = user_id);
+
+create index if not exists entries_v2_user_date_idx on public.entries_v2 (user_id, original_date);
+create index if not exists entries_v2_user_arc_idx on public.entries_v2 (user_id, story_arc);
