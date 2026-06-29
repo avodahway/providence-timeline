@@ -64,7 +64,7 @@ Needed before packaging:
 - Android Studio for Android.
 - Apple Developer account.
 - Google Play Developer account.
-- Privacy policy URL.
+- Privacy policy URL: `/privacy.html`.
 - Store screenshots.
 - App icon and splash assets.
 
@@ -74,9 +74,9 @@ Providence Timeline stores sensitive personal data: prayers, grief, family detai
 
 Before public app-store launch, prepare:
 
-- privacy policy
+- privacy policy page
 - terms of use
-- account deletion instructions
+- account deletion instructions page
 - export instructions
 - security statement
 
@@ -85,7 +85,7 @@ Before public app-store launch, prepare:
 1. Finish GitHub -> Netlify workflow.
 2. Use Netlify URL as the installable web app.
 3. Test login, saving, and reflections with a few users.
-4. Add privacy policy and account deletion page.
+4. Privacy policy and account deletion pages are now present; review legal wording before public launch.
 5. Package desktop app with Tauri.
 6. Package mobile apps with Capacitor.
 7. Submit to app stores only after the data/privacy basics are solid.
