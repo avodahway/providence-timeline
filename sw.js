@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v7-heirloom-object-shell';
+const CACHE_NAME = 'lantern-v1-creative-reset-shell';
 const APP_SHELL = [
   '/',
   '/index.html',

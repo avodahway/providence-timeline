@@ -1,363 +1,259 @@
-# Providence Design Language
+# Lantern Design Language
 
-Providence Design Language, or PDL, is the visual and emotional foundation for Providence Timeline.
+Lantern is an heirloom field atlas for discovering God's providence over years. It is not a productivity app, dashboard, CRM, or modern SaaS tool with warm colors.
 
-It should make every screen feel like entering a quiet study: warm paper, forest ink, a path through memory, and enough silence for reflection. The product should never feel like a dashboard, admin panel, CRM, analytics tool, or productivity surface.
+Every screen should feel like opening an old sea chest containing journals, maps, sketches, field notes, letters, botanical specimens, and navigation instruments collected over a lifetime.
 
 ## North Star
 
-Every design decision must answer one question:
+Lantern should make the user feel:
 
-> Would someone enjoy sitting here with coffee for an hour remembering their life?
+> I am quietly discovering the story God has been writing all along.
 
-If the answer is not yes, simplify and soften.
-
-The application exists to help someone remember prayers, decisions, provisions, losses, conversations, seasons, and the faithfulness of God through ordinary life. It should invite remembrance before it asks for structure.
+If a screen feels like organizing notes, managing data, or operating software, simplify it until it feels like exploring a meaningful object.
 
 ## Visual Sources
 
-PDL draws from:
+Draw from:
 
-- Heirloom journals
-- Antique field notebooks
-- National Park maps
-- Old family Bibles
-- Handcrafted paper
-- Quiet libraries
-- Warm coffee shops
-- Museum exhibits
-- Pilgrimage journals
+- Antique maritime atlases
+- Explorer field journals
+- Scientific engravings
+- Museum archives
+- Ship logbooks
+- Botanical field guides
+- Old navigation charts
+- Handwritten marginalia
+- Heirloom books passed through generations
+- Brass instruments, paper labels, wax seals, rope, linen, and weathered ink
 
-PDL avoids:
+Avoid:
 
-- Dashboards
-- Admin panels
-- Enterprise software
-- Analytics tools
-- CRMs
-- Dense tables as a first impression
-- Loud badges, generic widgets, and technical labels
+- Linear, Notion, Airtable, dashboards, startup SaaS, Material Design
+- Generic outline icon systems
+- Dense grids of identical cards
+- Large marketing hero sections
+- Bright accents, hard grays, glassmorphism, and trend-driven styling
+
+## Product Metaphor
+
+Lantern is an explorer's atlas of ordinary life.
+
+Use these terms carefully and subtly:
+
+- Journal -> Logbook
+- Timeline -> Voyage
+- Threads -> Currents
+- Reflections -> Lantern Notes
+- Providence Map -> Chart
+- Answered Prayer -> Landfall
+- Turning Point -> Bearing Changed
+
+The metaphor should never become cheesy. It should feel like language that belongs in a field notebook, not a themed interface.
 
 ## Hierarchy
 
-Every screen should arrange importance in this order:
+Every main screen should arrange importance in this order:
 
 1. Identity
-2. Remember something
-3. See your story
-4. Explore
+2. Begin a page
+3. Notice the currents
+4. Open the instruments
 5. Utilities
 
-Utility actions such as export, account state, data safety, versioning, diagnostics, and settings must be quiet. They belong in a small menu or footer-level surface unless the user specifically asks for them.
+Export, account state, data safety, diagnostics, versioning, and settings are archive tools. They belong in a quiet utility menu.
 
 ## Typography
 
-### Display
+Typography should feel like beautiful book design, not oversized marketing.
 
-Use elegant editorial headings for identity, section openings, annual review, and reflective prompts.
+Display:
 
-- Font family: Georgia, Cambria, Times New Roman, serif
-- Weight: 400 to 500
-- Tracking: 0
-- Tone: calm, literary, timeless
-- Avoid all-caps headings except small section labels
+- Use elegant serif headings with restrained scale.
+- Prefer book-title proportions over giant hero typography.
+- Keep tracking at 0.
+- Let line-height and surrounding space create dignity.
 
-### Body
+Body:
 
-Use readable system sans for functional copy and long journal text.
+- Keep long text comfortable and readable.
+- Use warm ink colors.
+- Limit paragraph width so reading feels intimate.
 
-- Font family: Inter or system UI
-- Line height: 1.6 to 1.8
-- Paragraph width: 56 to 72 characters
-- Tone: plain, human, reflective
+Labels:
 
-### Supporting Labels
+- Small labels may use quiet uppercase when they resemble specimen labels, shelf marks, or atlas captions.
+- Avoid technical labels and database language.
 
-Small labels may use uppercase, but only for quiet wayfinding.
+## Color
 
-- Use for: "Today", "Your Story", "Explore"
-- Avoid: technical category labels, database terms, status codes
+The palette should remain quiet:
 
-## Color System
+- Warm ivory
+- Aged paper
+- Deep forest ink
+- Muted brass
+- Soft sage
+- Weathered charcoal
 
-Use cream, forest green, warm olive, and muted gold as the emotional base.
+Forest green carries identity. Muted brass marks discovery. Cream and paper tones carry the atmosphere. Nothing should feel bright, digital, or synthetic.
 
-Core tokens:
+## Surfaces
 
-- `--pdl-cream-50`: #fffdf7
-- `--pdl-cream-100`: #fbf7ef
-- `--pdl-cream-200`: #f6f0e7
-- `--pdl-cream-300`: #eee3d3
-- `--pdl-forest-900`: #1f342f
-- `--pdl-forest-800`: #31524a
-- `--pdl-olive-700`: #66734f
-- `--pdl-olive-500`: #8c9165
-- `--pdl-gold-500`: #d8bd65
-- `--pdl-gold-300`: #e9d893
-- `--pdl-clay-600`: #9a5b46
-- `--pdl-ink`: #222a27
-- `--pdl-muted`: #6e746f
+Replace generic cards with paper artifacts:
 
-Rules:
+- Archival paper
+- Museum specimen labels
+- Explorer note cards
+- Catalog inserts
+- Old journal pages
+- Folded map fragments
 
-- Backgrounds should read as cream paper, not beige software.
-- Forest green carries identity and primary actions.
-- Olive supports secondary structure.
-- Muted gold highlights memory, path, and providence.
-- Avoid harsh gray. Use warm ink and translucent forest lines instead.
+Surface rules:
 
-## Surface System
+- Minimal shadows.
+- Thin warm borders.
+- Soft rounded corners.
+- Rich typography.
+- Generous padding.
+- No nested dashboard cards.
 
-Surfaces should feel like paper, not cards.
+Not every piece of information needs a box. Let important text sit directly on the page when it feels more editorial.
 
-Use:
+## Signature Motif
 
-- Soft paper panels
-- Very subtle shadows
-- 8px radius
-- Gentle border color
-- Generous padding
-- Quiet interior rhythm
-
-Avoid:
-
-- Heavy card grids
-- Hard outlines
-- Nested cards
-- Floating dashboard panels
-- Bright status chips
-
-Surface names:
-
-- `pdl-paper`: standard paper surface
-- `pdl-page`: broad page background
-- `pdl-story-window`: a soft glimpse into a life
-- `pdl-empty-state`: reflective invitation when content is absent
-- `pdl-field-note`: small supporting note or prompt
-
-## Signature Motif: The Providence Path
-
-The Providence Path is the primary visual motif of the application.
+Lantern's signature motif is the chart line: a winding path of providence.
 
 It represents:
 
-- A winding journey
-- Providence seen over time
-- Ordinary moments becoming connected
-- Pilgrimage, memory, and return
+- The voyage of ordinary life
+- Bearings that change over time
+- Currents that are only visible later
+- God's faithfulness traced through years
 
-It should become recognizable across the product like a signature mark.
+Use it as a recurring identity element in:
 
-Use it in:
-
-- Onboarding
+- Opening pages
 - Empty states
-- Story Map
-- Providence Map
 - Loading
-- Section dividers
-- Annual review
-- Transitions
-- Print and export covers
+- Dividers
+- Annual reviews
+- The future Chart
+- Export covers
 
-Rules:
-
-- The path should be hand-drawn, organic, and imperfect.
-- It should usually be warm olive or muted gold.
-- It should not look like a chart line, route optimization path, or analytics trend.
-- It should move slowly and quietly when animated.
-- It should support the memory, not decorate for its own sake.
-
-Implementation:
-
-- Static asset: `/icons/pdl-path-motif.svg`
-- CSS classes: `.pdl-path-divider`, `.pdl-path-mark`, `.pdl-path-loading`
+The line should feel hand-drawn, imperfect, and map-like. It should never feel like a productivity graph.
 
 ## Illustration Language
 
-Illustrations should feel hand-drawn and field-notebook inspired.
+Illustrations should feel discovered, not inserted.
 
-Approved subject matter:
+Approved subjects:
 
-- Compass
-- Winding path
-- Lantern
-- Mountain
-- Olive branch
-- Journal
-- Home
-- Cross
-- Trail marker
+- Ship lantern
+- Brass compass
+- Sextant
+- Telescope
+- Feather pen
+- Field notebook
+- Botanical specimens
+- Sea charts
+- Stars and constellations
+- Ships
+- Rope knots
+- Wax seals
+- Home, mountain, cross, and tree symbols when used with restraint
 
 Style:
 
-- Monoline or light ink stroke
-- Forest ink with olive or gold accents
-- No glossy icons
-- No filled app-icon style pictograms
-- No generic software icon packs unless heavily softened
+- Antique engraving
+- Field-guide drawing
+- Museum archive mark
+- Thin ink lines with occasional muted brass
+- Collectible, quiet, imperfect
 
-Implementation:
+Avoid generic Lucide-style repetition as the primary visual language. Utility icons can exist, but the memorable parts of Lantern should be custom illustrated.
 
-- Sprite asset: `/icons/pdl-illustrations.svg`
-- CSS class: `.pdl-illustration`
+## Layout
 
-## Interaction Language
-
-Interactions should encourage reflection, not productivity.
+Design the homepage like the opening pages of an extraordinary book.
 
 Use:
 
-- "Remember This Moment"
-- "What happened?"
-- "Add More Details"
-- "View your story as"
-- "Coming Soon"
+- Editorial spreads
+- Museum exhibit pacing
+- Old atlas rhythm
+- Alternating compositions
+- Marginal notes
+- Specimen labels
+- Calm alignment on an invisible grid
 
 Avoid:
 
-- "Submit"
-- "Record"
-- "Database"
-- "Widget"
-- "Graph"
-- "Admin"
-- Raw technical errors
+- Giant centered stacked sections
+- Repeated left-title/right-card blocks
+- Random floating ornaments
+- Filling every gap with a component
 
-Motion:
+Each major section should feel intentionally composed and visually distinct:
 
-- Slow enough to feel calm
-- Short enough to stay responsive
-- Prefer opacity, gentle translate, and path drawing
-- Avoid bouncy motion
+- Today's entry: a logbook spread
+- Story overview: an archive table or branching map
+- Explore: a chart room with instruments
+- Empty states: invitations to open the first page
 
-## Empty States
+## Motion
 
-An empty state should be an invitation, not a warning.
+Motion should resemble physical paper:
 
-Pattern:
+- Turning pages
+- Opening drawers
+- Unfolding maps
+- Sliding note cards
+- Lifting tracing paper
 
-1. A reflective heading
-2. A short sentence that names the emotional value
-3. One clear action
-4. Optional Providence Path motif
+Never bounce. Never flash. Never perform.
 
-Examples:
+## Writing
 
-- "Your story begins here."
-- "The first ordinary day you remember may become one of the most important later."
-- "You have not recorded an unanswered prayer yet."
-- "Later reflections will gather here when hindsight begins to speak."
+Copy should create mystery without becoming obscure.
 
-## Application Art Direction Layer
+Prefer:
 
-The application should feel continuous with the login brand board. A person should move from login into the journal without feeling like they crossed from an heirloom identity into a software workspace.
+- "Some prayers are still waiting for landfall."
+- "Currents appear when ordinary pages begin pulling in the same direction."
+- "The lantern will glow here when hindsight begins to speak."
+- "The first ordinary day you preserve may become a coordinate years from now."
 
-Every major section needs a visual anchor:
+Avoid:
 
-- Today's Reflection: journal or open notebook
-- Your Story: branching path
-- Explore: compass
-- Journal: open notebook
-- Timeline: trail marker or path
-- Story Arcs: branching path
-- Providence Map: folded antique map
-- Reflections: lantern
-- Data Safety: home, cross, or journal mark
+- "Nothing here yet."
+- "No data available."
+- "Submit."
+- "Record."
+- Raw database or developer errors.
 
-The Providence Path is the signature motif. Use it as a chapter break, section transition, empty-state cue, loading mark, and future map language. It is not a decorative squiggle; it represents ordinary moments becoming a story over time.
+## Future Chart
 
-Surfaces should feel handmade:
+Do not build the Chart prematurely.
 
-- Paper grain through very low-opacity lines or warm gradients
-- Small botanical corners or pressed-leaf marks
-- Subtle unevenness through layered cream, parchment, and linen backgrounds
-- Soft shadows that feel like paper resting on a desk
-
-Avoid visual dead zones. If a section has only text and boxes, add one quiet illustration or path motif so the screen remains recognizably Providence Timeline.
-
-## Atlas of Providence
-
-The core product metaphor is now an atlas of Providence: part heirloom journal, part explorer's map, part family Bible. Screens should feel like discovered pages from a handcrafted record of faithfulness over decades.
-
-Design rhythm:
-
-- Alternate visual weight between sections so the page reads like chapters, not rows.
-- Use oversized editorial headings where the user should pause.
-- Let supporting text breathe directly on the paper when a card is not necessary.
-- Use visual dividers, scripture-inspired ornaments, winding paths, botanical sketches, and map textures to create page turns.
-- Avoid repeating the same composition section after section.
-
-Section heroes:
-
-- Today's Reflection: illustrated journal
-- Your Story: branching path
-- Explore: antique compass
-- Journal: open notebook
-- Timeline: unfolding scroll
-- Story Arcs: tree rings or threads
-- Reflections: lantern
-- Providence Map: folded explorer's map
-
-Landmarks are the recurring symbols that will eventually appear throughout Timeline and Providence Map. Current landmark language includes answered prayer, turning point, calling, new season, provision, family milestone, ministry, suffering, and restoration.
-
-Copy should create mystery. Prefer "Some prayers are still waiting for their ending" over "No unanswered prayers." Prefer "Patterns only time can reveal" over "Journal rhythm." The user should feel invited to discover the story God has been writing all along.
-
-## Heirloom Object Standard
-
-Providence Timeline should not read as a dashboard with vintage colors. It should feel like a beautiful object: an heirloom journal, old field notebook, devotional, and antique atlas carried through ordinary life.
-
-Layout standards:
-
-- Use title-page scale for identity and chapter moments.
-- Let large sections breathe with generous vertical space.
-- Reserve cards for actions and meaningful containment; do not box every fact.
-- Use manuscript-style rules, marginalia, and open paper fields instead of repeated rectangles.
-- Let major sections have different compositions: journal page, branching map, atlas spread, scroll, lantern note.
-
-Visual standards:
-
-- Illustrations should feel engraved or hand-drawn, never like modern app icons.
-- Background details should be nearly invisible: compass roses, cartographic rings, map grids, botanical sketches, paper grain.
-- Use forest green, cream, muted gold, aged paper, and soft sage only.
-- Prefer restraint over decoration; a single quiet mark is often stronger than several icons.
-
-Emotional standard:
-
-Ask whether the screen feels like discovering a forgotten page in an old family journal. If it still feels like software, remove boxes, enlarge the type hierarchy, and add silence around the content.
-
-## Future Relationship Model
-
-PDL should prepare visually and structurally for Providence Map without building the visualization prematurely.
-
-Future graph relationships include:
+Prepare for it by preserving relationships among:
 
 - Entries
 - Connections
-- Story arcs
+- Currents
 - People
 - Places
 - Scripture
 - Prayer status
 - Anchor events
+- Landmarks
 
-Design implication:
+The rest of the application should make the Chart feel inevitable before it exists.
 
-Current screens should preserve and name these relationships gently, so the future map feels inevitable rather than bolted on.
+## Final Test
 
-## Page Checklist
+Before finalizing any screen, ask:
 
-Before a screen is finished, ask:
+> Does this look like software, or does it feel like discovering a forgotten page in an old family atlas?
 
-- Is identity quiet but unmistakable?
-- Is remembering the clearest action?
-- Does the writing area feel like opening a journal?
-- Are utilities hidden until needed?
-- Is there enough whitespace to breathe?
-- Are empty states emotionally inviting?
-- Does the Providence Path appear where it helps meaning?
-- Does this feel like software?
-
-If it feels like software, simplify it.
-
-If it feels timeless, keep it.
+If it feels like software, remove weight, soften language, add restraint, and return to the object.
