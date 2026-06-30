@@ -12,9 +12,12 @@ create table if not exists public.entries_v2 (
   scripture text,
   reflection_date date,
   reflection_text text,
+  atlas jsonb not null default '{}'::jsonb,
   connections jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
+
+alter table public.entries_v2 add column if not exists atlas jsonb not null default '{}'::jsonb;
 
 alter table public.entries_v2 enable row level security;
 
@@ -32,3 +35,5 @@ create policy "Users can delete their own v2 entries" on public.entries_v2 for d
 
 create index if not exists entries_v2_user_date_idx on public.entries_v2 (user_id, original_date);
 create index if not exists entries_v2_user_arc_idx on public.entries_v2 (user_id, story_arc);
+create index if not exists entries_v2_user_atlas_idx on public.entries_v2 using gin (atlas);
+create index if not exists entries_v2_user_connections_idx on public.entries_v2 using gin (connections);
