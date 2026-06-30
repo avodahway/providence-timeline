@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v5-relationship-engine';
+const CACHE_NAME = 'providence-timeline-v6-living-stories';
 const APP_SHELL = [
   '/',
   '/index.html',
