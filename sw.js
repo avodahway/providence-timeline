@@ -6,7 +6,7 @@ const APP_SHELL = [
   '/account-deletion.html',
   '/manifest.webmanifest',
   '/icons/providence-icon.svg',
-  '/icons/providence-timeline-logo.png'
+  '/icons/providence-monogram.png'
 ];
 
 self.addEventListener('install', (event) => {
