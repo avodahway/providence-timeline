@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refreshing Providence Timeline</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f0e5;color:#183c39;font-family:Georgia,Cambria,"Times New Roman",serif}
+main{width:min(520px,calc(100% - 32px));text-align:center}
+p{font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.6;color:rgba(31,41,37,.72)}
+</style>
+</head>
+<body>
+<main>
+<h1>Refreshing Providence Timeline</h1>
+<p>Clearing the local app cache so the newest Providence Map engine can load.</p>
+</main>
+<script>
+(async () => {
+  if ('serviceWorker' in navigator) {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(registrations.map((registration) => registration.unregister()));
+  }
+  if ('caches' in window) {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((key) => caches.delete(key)));
+  }
+  location.replace('/?fresh=' + Date.now());
+})();
+</script>
+</body>
+</html>
