@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v2-login-brand-shell';
+const CACHE_NAME = 'providence-timeline-v3-brand-reset-shell';
 const APP_SHELL = [
   '/',
   '/index.html',
