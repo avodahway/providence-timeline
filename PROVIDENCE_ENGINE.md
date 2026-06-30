@@ -114,6 +114,53 @@ Each page stores `map_data` for future map views:
 
 Future AI features should read `structured_data`, `relationship_edges`, and `map_data` before rereading full journal text.
 
+## Living Stories
+
+Living Stories are recurring people, families, churches, ministries, businesses, places, projects, seasons, or prayer burdens that appear across pages.
+
+They are stored in `entries_v2.living_stories` as JSON:
+
+- `name`
+- `type`
+- `notes`
+
+The engine also detects recurring Living Stories from existing page fields such as people, organizations, places, projects, story arcs, seasons, and intercession targets. A Living Story is a shared story, not a task list or contact record.
+
+Living Story map language must stay cautious:
+
+- Shared story
+- Possible relationship
+- Still unfolding
+- Worth revisiting
+- Later reflection
+
+## Intercession
+
+Intercession is optional. It marks a page as part of someone else's story intersecting the user's story.
+
+It is stored in `entries_v2.intercession` as JSON:
+
+- `enabled`
+- `target`
+- `prayer`
+- `concern`
+- `follow_up_date`
+- `status`
+- `notes`
+
+Allowed statuses:
+
+- Waiting
+- Continuing
+- Changed
+- Answered
+- Needs Follow-up
+- Closed
+
+The app may gently surface dated intercession pages with language such as "Worth revisiting" or "Has anything changed?" It must not say "overdue" or imply failure.
+
+The engine must never mark an intercession as answered unless the user explicitly chooses Answered.
+
 ## Currents
 
 Currents are recurring invisible themes. They are detected from seasons, story arcs, tags, themes, emotions, and the explicit `current` field.

@@ -16,6 +16,8 @@ create table if not exists public.entries_v2 (
   structured_data jsonb not null default '{}'::jsonb,
   relationship_edges jsonb not null default '[]'::jsonb,
   map_data jsonb not null default '{}'::jsonb,
+  living_stories jsonb not null default '[]'::jsonb,
+  intercession jsonb not null default '{}'::jsonb,
   connections jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
@@ -24,6 +26,8 @@ alter table public.entries_v2 add column if not exists atlas jsonb not null defa
 alter table public.entries_v2 add column if not exists structured_data jsonb not null default '{}'::jsonb;
 alter table public.entries_v2 add column if not exists relationship_edges jsonb not null default '[]'::jsonb;
 alter table public.entries_v2 add column if not exists map_data jsonb not null default '{}'::jsonb;
+alter table public.entries_v2 add column if not exists living_stories jsonb not null default '[]'::jsonb;
+alter table public.entries_v2 add column if not exists intercession jsonb not null default '{}'::jsonb;
 
 alter table public.entries_v2 enable row level security;
 
@@ -45,4 +49,6 @@ create index if not exists entries_v2_user_atlas_idx on public.entries_v2 using 
 create index if not exists entries_v2_user_structured_idx on public.entries_v2 using gin (structured_data);
 create index if not exists entries_v2_user_relationship_edges_idx on public.entries_v2 using gin (relationship_edges);
 create index if not exists entries_v2_user_map_data_idx on public.entries_v2 using gin (map_data);
+create index if not exists entries_v2_user_living_stories_idx on public.entries_v2 using gin (living_stories);
+create index if not exists entries_v2_user_intercession_idx on public.entries_v2 using gin (intercession);
 create index if not exists entries_v2_user_connections_idx on public.entries_v2 using gin (connections);

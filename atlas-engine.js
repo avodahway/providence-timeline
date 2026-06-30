@@ -10,6 +10,9 @@
   const stopWords = new Set(['after', 'again', 'about', 'because', 'before', 'between', 'could', 'every', 'first', 'from', 'have', 'into', 'made', 'more', 'only', 'other', 'over', 'right', 'same', 'should', 'that', 'their', 'there', 'these', 'thing', 'this', 'through', 'under', 'what', 'when', 'where', 'which', 'while', 'with', 'would', 'your']);
   const findMatches = (text, regex) => unique([...String(text || '').matchAll(regex)].map((match) => match[1] || match[0]).map((item) => item.trim()).filter(Boolean));
   const keywordTokens = (text) => unique((String(text || '').toLowerCase().match(/[a-z][a-z0-9']{3,}/g) || []).filter((token) => !stopWords.has(token)));
+  const normalizeArray = (value) => Array.isArray(value) ? value : split(value);
+  const dateYear = (date) => String(date || '').slice(0, 4);
+  const safeSlug = (value) => lower(value).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const textTokens = (entry) => unique([
     entry.title,
     entry.original_text,
@@ -80,9 +83,68 @@
     };
   }
 
+  function normalizeLivingStory(story = {}) {
+    const name = String(story.name || story.title || '').trim();
+    return {
+      id: story.id || (name ? `story-${safeSlug(name)}` : ''),
+      name,
+      type: story.type || story.kind || 'Person',
+      notes: story.notes || ''
+    };
+  }
+
+  function normalizeIntercession(intercession = {}) {
+    return {
+      enabled: Boolean(intercession.enabled),
+      target: String(intercession.target || intercession.story || '').trim(),
+      prayer: String(intercession.prayer || '').trim(),
+      concern: String(intercession.concern || intercession.burden || '').trim(),
+      follow_up_date: intercession.follow_up_date || '',
+      status: intercession.status || 'Waiting',
+      notes: String(intercession.notes || '').trim()
+    };
+  }
+
+  function storyTypeFor(name, entry, explicitType = '') {
+    if (explicitType) return explicitType;
+    const text = [name, entry.location, entry.story_arc, entry.season].join(' ');
+    if (/church/i.test(text)) return 'Church';
+    if (/ministry|mission/i.test(text)) return 'Ministry';
+    if (/family/i.test(text)) return 'Family';
+    if (/business|company|avodah/i.test(text)) return 'Business';
+    if (/project/i.test(text)) return 'Project';
+    if ([entry.location, ...(entry.structured_data?.places || [])].map(lower).includes(lower(name))) return 'Place';
+    if ([entry.story_arc, entry.season].map(lower).includes(lower(name))) return 'Season';
+    return 'Person';
+  }
+
+  function livingStoryNames(entry) {
+    const atlas = normalizeAtlas(entry.atlas);
+    const data = normalizeStructuredData(entry.structured_data || extractStructuredData(entry));
+    const intercession = normalizeIntercession(entry.intercession);
+    const explicitStories = normalizeArray(entry.living_stories).map(normalizeLivingStory).filter((story) => story.name);
+    const names = [
+      ...explicitStories.map((story) => story.name),
+      ...(entry.people || []),
+      ...data.family_members,
+      ...data.churches,
+      ...data.ministries,
+      ...data.organizations,
+      ...data.places,
+      ...data.projects,
+      entry.story_arc,
+      atlas.current,
+      intercession.enabled ? intercession.target : ''
+    ];
+    return unique(names.map((name) => String(name || '').trim()).filter(Boolean));
+  }
+
   function extractStructuredData(entry) {
     const atlas = normalizeAtlas(entry.atlas);
-    const text = [entry.title, entry.original_text, entry.reflection_text, atlas.prayer, atlas.field_notes, atlas.follow_up].filter(Boolean).join('\n');
+    const intercession = normalizeIntercession(entry.intercession);
+    const livingStories = normalizeArray(entry.living_stories).map(normalizeLivingStory).filter((story) => story.name);
+    const intercessionText = intercession.enabled ? [intercession.target, intercession.prayer, intercession.concern, intercession.notes].join('\n') : '';
+    const text = [entry.title, entry.original_text, entry.reflection_text, atlas.prayer, atlas.field_notes, atlas.follow_up, intercessionText].filter(Boolean).join('\n');
     const scripture = unique([entry.scripture, ...findMatches(text, new RegExp(`${scriptureBook}\\s+\\d{1,3}:\\d{1,3}(?:-\\d{1,3})?`, 'gi'))].filter(Boolean));
     const properNames = findMatches(text, /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})\b/g)
       .filter((name) => !ignoredProperNames.has(name) && !name.startsWith('After ') && !name.startsWith('Before ') && name !== entry.location && !scripture.some((ref) => ref.startsWith(name)))
@@ -106,17 +168,17 @@
       cities: places.filter((place) => !/,/.test(place)),
       countries: findMatches(text, /\b(United States|Canada|Mexico|Alaska|Israel|Kenya|Uganda|Honduras|Guatemala)\b/gi).map(titleCase),
       scripture_references: scripture,
-      prayer_requests: unique([atlas.prayer, ...prayerSentences]).filter(Boolean),
+      prayer_requests: unique([atlas.prayer, intercession.enabled ? intercession.prayer : '', ...prayerSentences]).filter(Boolean),
       answered_prayers: unique([...atlas.answered_prayers, ...provisionSentences]).filter(Boolean),
       questions: unique([...atlas.questions, ...questionSentences]),
       decisions: unique(decisionSentences),
       provisions: unique(provisionSentences),
       emotions: detectedEmotions,
-      projects: atlas.projects,
-      themes: detectedThemes,
+      projects: unique([...atlas.projects, ...livingStories.filter((story) => story.type === 'Project').map((story) => story.name)]),
+      themes: unique([...detectedThemes, intercession.enabled ? 'Intercession' : '']),
       recurring_ideas: words.slice(0, 18),
-      currents: unique([atlas.current, ...detectedThemes]).filter(Boolean),
-      story_arcs: unique([entry.story_arc]).filter(Boolean),
+      currents: unique([atlas.current, intercession.enabled ? 'Intercession' : '', ...detectedThemes]).filter(Boolean),
+      story_arcs: unique([entry.story_arc, ...livingStories.map((story) => story.name)]).filter(Boolean),
       seasons: unique([entry.season]).filter(Boolean),
       important_dates: dateMentions,
       keywords: words.slice(0, 24)
@@ -147,6 +209,7 @@
       ['shared organization', dataA.organizations, dataB.organizations],
       ['shared church', dataA.churches, dataB.churches],
       ['shared ministry', dataA.ministries, dataB.ministries],
+      ['shared story', livingStoryNames(a), livingStoryNames(b)],
       ['shared project', dataA.projects, dataB.projects],
       ['shared theme', dataA.themes, dataB.themes],
       ['shared emotion', dataA.emotions, dataB.emotions],
@@ -173,7 +236,7 @@
   }
 
   function routeStrength(signals) {
-    const weights = { 'shared people': 4, 'shared family': 4, 'shared location': 3, 'shared organization': 3, 'shared church': 3, 'shared ministry': 3, 'shared project': 3, 'shared theme': 2, 'shared emotion': 2, 'shared scripture': 4, 'shared prayer': 4, 'repeated question': 3, 'shared provision': 4, tag: 2, season: 1, current: 3, 'story arc': 4, 'shared date anniversary': 2, 'repeated keyword': 1 };
+    const weights = { 'shared people': 4, 'shared family': 4, 'shared location': 3, 'shared organization': 3, 'shared church': 3, 'shared ministry': 3, 'shared story': 4, 'shared project': 3, 'shared theme': 2, 'shared emotion': 2, 'shared scripture': 4, 'shared prayer': 4, 'repeated question': 3, 'shared provision': 4, tag: 2, season: 1, current: 3, 'story arc': 4, 'shared date anniversary': 2, 'repeated keyword': 1 };
     return signals.reduce((sum, signal) => sum + (weights[signal.kind] || 1), 0);
   }
 
@@ -187,6 +250,7 @@
   function relationshipType(signals) {
     const kinds = signals.map((signal) => signal.kind);
     if (kinds.includes('shared prayer')) return 'Shared prayer';
+    if (kinds.includes('shared story')) return 'Shared story';
     if (kinds.includes('shared people') || kinds.includes('shared family')) return 'Shared people';
     if (kinds.includes('repeated question')) return 'Repeated question';
     if (kinds.includes('shared theme') || kinds.includes('current')) return 'Shared theme';
@@ -266,6 +330,67 @@
     }).filter((group) => group.pages.length > 1);
   }
 
+  function livingStories(entries) {
+    const map = new Map();
+    sortEntries(entries).forEach((entry) => {
+      const explicitStories = normalizeArray(entry.living_stories).map(normalizeLivingStory).filter((story) => story.name);
+      const intercession = normalizeIntercession(entry.intercession);
+      const allNames = livingStoryNames(entry);
+      allNames.forEach((name) => {
+        const explicit = explicitStories.find((story) => lower(story.name) === lower(name));
+        const key = safeSlug(name);
+        const type = storyTypeFor(name, entry, explicit?.type || (intercession.enabled && lower(intercession.target) === lower(name) ? 'Prayer burden' : ''));
+        if (!map.has(key)) {
+          map.set(key, {
+            id: `story-${key}`,
+            name,
+            type,
+            entry_ids: [],
+            years: [],
+            first_date: entry.original_date,
+            last_date: entry.original_date,
+            intercession_count: 0,
+            open_intercession_count: 0
+          });
+        }
+        const story = map.get(key);
+        story.entry_ids.push(entry.id);
+        if (dateYear(entry.original_date)) story.years = unique([...story.years, dateYear(entry.original_date)]);
+        if (entry.original_date && (!story.first_date || entry.original_date < story.first_date)) story.first_date = entry.original_date;
+        if (entry.original_date && (!story.last_date || entry.original_date > story.last_date)) story.last_date = entry.original_date;
+        if (intercession.enabled && lower(intercession.target) === lower(name)) {
+          story.intercession_count += 1;
+          if (!['answered', 'closed'].includes(lower(intercession.status))) story.open_intercession_count += 1;
+        }
+      });
+    });
+    return [...map.values()]
+      .filter((story) => story.entry_ids.length > 1 || story.intercession_count > 0)
+      .sort((a, b) => b.entry_ids.length - a.entry_ids.length || a.name.localeCompare(b.name))
+      .map((story) => ({
+        ...story,
+        years: story.years.sort(),
+        summary: `${story.name} appears in ${story.entry_ids.length} entr${story.entry_ids.length === 1 ? 'y' : 'ies'}${story.years.length ? ` across ${story.years.length} year${story.years.length === 1 ? '' : 's'}` : ''}.`
+      }));
+  }
+
+  function intercessionFollowUps(entries, today = new Date()) {
+    const todayKey = today.toISOString().slice(0, 10);
+    return sortEntries(entries)
+      .map((entry) => ({ entry, intercession: normalizeIntercession(entry.intercession) }))
+      .filter(({ intercession }) => intercession.enabled && intercession.follow_up_date && intercession.follow_up_date <= todayKey && !['answered', 'closed'].includes(lower(intercession.status)))
+      .map(({ entry, intercession }) => ({
+        entry_id: entry.id,
+        title: entry.title,
+        date: entry.original_date,
+        story: intercession.target || 'this story',
+        prayed: intercession.prayer || intercession.concern || entry.title,
+        status: intercession.status,
+        follow_up_date: intercession.follow_up_date,
+        prompt: `You prayed for ${intercession.target || 'this story'} about ${intercession.concern || intercession.prayer || entry.title} on ${entry.original_date}. Has anything changed?`
+      }));
+  }
+
   function timelineClusters(entries, zoom = 'year') {
     const format = {
       day: (date) => date,
@@ -284,6 +409,7 @@
   }
 
   function mapData(entries) {
+    const stories = livingStories(entries);
     const nodes = sortEntries(entries).map((entry, index) => {
       const atlas = normalizeAtlas(entry.atlas);
       const coordinates = symbolicCoordinates(entry, index);
@@ -299,17 +425,31 @@
         story_arcs: structured.story_arcs,
         themes: structured.themes,
         people: structured.people,
-        places: structured.places
+        places: structured.places,
+        living_stories: livingStoryNames(entry),
+        intercession: normalizeIntercession(entry.intercession)
       };
     });
     const edges = relationshipEdges(entries);
-    const clusters = constellations(entries).map((cluster) => ({ name: cluster.name, entry_ids: cluster.pages.map((page) => page.id), type: 'Recurring theme' }));
-    return { nodes, edges, suggested_routes: edges.slice(0, 12), clusters, story_arcs: constellations(entries), recurring_themes: currents(entries), timeline_coordinates: nodes.map((node) => ({ id: node.id, date: node.date, coordinate: node.timeline_coordinate })) };
+    const themeClusters = constellations(entries).map((cluster) => ({ name: cluster.name, entry_ids: cluster.pages.map((page) => page.id), type: 'Recurring theme' }));
+    const storyClusters = stories.map((story) => ({ name: story.name, entry_ids: story.entry_ids, type: 'Living story', intercession_count: story.intercession_count, open_intercession_count: story.open_intercession_count }));
+    const livingStoryNodes = stories.map((story, index) => ({
+      id: story.id,
+      title: story.name,
+      kind: 'living-story',
+      type: story.type,
+      entry_ids: story.entry_ids,
+      years: story.years,
+      intercession_count: story.intercession_count,
+      open_intercession_count: story.open_intercession_count,
+      coordinates: { latitude: Number((((index * 19) % 140) / 10 - 7).toFixed(2)), longitude: Number((((index * 31) % 220) / 10 - 11).toFixed(2)) }
+    }));
+    return { nodes, edges, suggested_routes: edges.slice(0, 12), clusters: [...storyClusters, ...themeClusters], story_arcs: constellations(entries), recurring_themes: currents(entries), living_story_nodes: livingStoryNodes, recurring_stories: stories, follow_up_prompts: intercessionFollowUps(entries), timeline_coordinates: nodes.map((node) => ({ id: node.id, date: node.date, coordinate: node.timeline_coordinate })) };
   }
 
   function sortEntries(entries) {
     return [...entries].sort((a, b) => (a.original_date || '').localeCompare(b.original_date || ''));
   }
 
-  window.ProvidenceAtlas = { normalizeAtlas, normalizeStructuredData, extractStructuredData, symbolicCoordinates, sharedSignals, confidenceLabel, relationshipEdges, relationshipsForEntry, mapData, buildRoutes, suggestedRoutes, currents, constellations, timelineClusters };
+  window.ProvidenceAtlas = { normalizeAtlas, normalizeStructuredData, normalizeLivingStory, normalizeIntercession, extractStructuredData, symbolicCoordinates, sharedSignals, confidenceLabel, relationshipEdges, relationshipsForEntry, mapData, buildRoutes, suggestedRoutes, currents, constellations, livingStories, intercessionFollowUps, timelineClusters };
 })();
