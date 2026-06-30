@@ -4,13 +4,16 @@ Providence Timeline should move in three layers. Each layer builds on the same a
 
 ## Layer 1: Installable Web App
 
-Status: configured in this repo.
+Status: configured and actively polished in this repo.
 
 Files added:
 
 - `manifest.webmanifest`
 - `sw.js`
+- `install.html`
+- `offline.html`
 - `icons/providence-icon.svg`
+- PNG install icons in `icons/`
 - app metadata in `index.html`
 
 What this gives us:
@@ -18,9 +21,20 @@ What this gives us:
 - Users can open the Netlify site.
 - On supported browsers, they can install it to their home screen or desktop.
 - The app can load its shell offline.
+- Users can read install instructions for iPhone, Android, and desktop.
 - Data still saves through Supabase login when online.
 
 This is the fastest shareable app mode.
+
+Current Path A checklist:
+
+- Production HTTPS URL: `https://providence-timeline.netlify.app/`
+- Install guide: `/install.html`
+- Cache reset helper: `/reset-cache.html`
+- Offline fallback: `/offline.html`
+- iOS install path: Safari share sheet -> Add to Home Screen
+- Android/desktop install path: browser install prompt or app menu
+- Remaining Path A work: offline draft capture, background sync, and device testing.
 
 ## Layer 2: Desktop App
 
@@ -67,6 +81,16 @@ Needed before packaging:
 - Privacy policy URL: `/privacy.html`.
 - Store screenshots.
 - App icon and splash assets.
+
+Current Path B checklist:
+
+- Choose wrapper: Capacitor for iOS/Android.
+- Add `package.json` and app build script.
+- Add Capacitor config with app id, app name, web directory, and production URL strategy.
+- Generate iOS and Android projects.
+- Prepare splash screens and store screenshots.
+- Test authentication redirects inside native webviews.
+- Create Apple Developer and Google Play Developer accounts before submission.
 
 ## Privacy Position
 

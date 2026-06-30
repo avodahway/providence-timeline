@@ -1,7 +1,8 @@
-const CACHE_NAME = 'providence-timeline-v7-installable-app';
+const CACHE_NAME = 'providence-timeline-v8-install-guide';
 const APP_SHELL = [
   '/',
   '/index.html',
+  '/install.html',
   '/offline.html',
   '/atlas-engine.js',
   '/privacy.html',
