@@ -189,3 +189,74 @@
     padding: 1.25rem;
   }
 }
+
+/* Visible PDL application: signature path and paper-study atmosphere. */
+.pdl-signature-path {
+  width: min(420px, 82vw);
+  height: 54px;
+  margin-top: 28px;
+  background: center / contain no-repeat url('/icons/pdl-path-motif.svg');
+  opacity: .72;
+}
+
+.pdl-main-path {
+  margin-top: -22px;
+  margin-bottom: 10px;
+}
+
+.pdl-journal-prompt {
+  max-width: 430px;
+  margin-top: 26px;
+  font-family: var(--pdl-font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+.journal-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.journal-header:after {
+  content: '';
+  position: absolute;
+  right: max(24px, calc((100vw - 1220px) / 2));
+  bottom: 28px;
+  width: min(440px, 38vw);
+  height: 74px;
+  background: center / contain no-repeat url('/icons/pdl-path-motif.svg');
+  opacity: .16;
+  pointer-events: none;
+}
+
+.app-locked .auth-copy .pdl-signature-path {
+  margin-inline: 0;
+}
+
+.journal-empty .pdl-path-divider {
+  width: min(520px, 86vw);
+  margin: 0 0 6px;
+}
+
+@media (max-width: 720px) {
+  .pdl-signature-path {
+    margin-inline: auto;
+    height: 46px;
+  }
+
+  .journal-header:after {
+    left: 50%;
+    right: auto;
+    bottom: 10px;
+    width: 86vw;
+    transform: translateX(-50%);
+  }
+
+  .pdl-main-path {
+    margin-top: -12px;
+  }
+
+  .pdl-journal-prompt {
+    margin-inline: auto;
+  }
+}
