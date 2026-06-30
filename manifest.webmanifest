@@ -1,12 +1,12 @@
 {
-  "name": "Lantern",
-  "short_name": "Lantern",
-  "description": "A private field atlas for discovering God's providence through ordinary life over time.",
+  "name": "Providence Timeline",
+  "short_name": "Providence",
+  "description": "A private app for remembering God's providence through entries, later reflections, story arcs, scripture, and connected events.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f7f0e5",
-  "theme_color": "#31524a",
+  "theme_color": "#183c39",
   "orientation": "portrait-primary",
   "categories": ["lifestyle", "productivity", "books"],
   "icons": [

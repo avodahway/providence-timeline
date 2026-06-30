@@ -1,15 +1,12 @@
-const CACHE_NAME = 'lantern-v3-study-room-shell';
+const CACHE_NAME = 'providence-timeline-v3-brand-reset-shell';
 const APP_SHELL = [
   '/',
   '/index.html',
   '/privacy.html',
   '/account-deletion.html',
-  '/styles/pdl.css',
   '/manifest.webmanifest',
   '/icons/providence-icon.svg',
-  '/icons/providence-monogram.png',
-  '/icons/pdl-path-motif.svg',
-  '/icons/pdl-illustrations.svg'
+  '/icons/providence-monogram.png'
 ];
 
 self.addEventListener('install', (event) => {
