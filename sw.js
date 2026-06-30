@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lantern-v2-archive-room-shell';
+const CACHE_NAME = 'lantern-v3-study-room-shell';
 const APP_SHELL = [
   '/',
   '/index.html',
