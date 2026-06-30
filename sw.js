@@ -1,7 +1,8 @@
-const CACHE_NAME = 'providence-timeline-v3-brand-reset-shell';
+const CACHE_NAME = 'providence-timeline-v4-atlas-engine';
 const APP_SHELL = [
   '/',
   '/index.html',
+  '/atlas-engine.js',
   '/privacy.html',
   '/account-deletion.html',
   '/manifest.webmanifest',
