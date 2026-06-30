@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v4-visible-pdl-shell';
+const CACHE_NAME = 'providence-timeline-v5-art-direction-shell';
 const APP_SHELL = [
   '/',
   '/index.html',

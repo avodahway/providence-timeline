@@ -249,6 +249,33 @@ Examples:
 - "You have not recorded an unanswered prayer yet."
 - "Later reflections will gather here when hindsight begins to speak."
 
+## Application Art Direction Layer
+
+The application should feel continuous with the login brand board. A person should move from login into the journal without feeling like they crossed from an heirloom identity into a software workspace.
+
+Every major section needs a visual anchor:
+
+- Today's Reflection: journal or open notebook
+- Your Story: branching path
+- Explore: compass
+- Journal: open notebook
+- Timeline: trail marker or path
+- Story Arcs: branching path
+- Providence Map: folded antique map
+- Reflections: lantern
+- Data Safety: home, cross, or journal mark
+
+The Providence Path is the signature motif. Use it as a chapter break, section transition, empty-state cue, loading mark, and future map language. It is not a decorative squiggle; it represents ordinary moments becoming a story over time.
+
+Surfaces should feel handmade:
+
+- Paper grain through very low-opacity lines or warm gradients
+- Small botanical corners or pressed-leaf marks
+- Subtle unevenness through layered cream, parchment, and linen backgrounds
+- Soft shadows that feel like paper resting on a desk
+
+Avoid visual dead zones. If a section has only text and boxes, add one quiet illustration or path motif so the screen remains recognizably Providence Timeline.
+
 ## Future Relationship Model
 
 PDL should prepare visually and structurally for Providence Map without building the visualization prematurely.
