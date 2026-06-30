@@ -13,11 +13,17 @@ create table if not exists public.entries_v2 (
   reflection_date date,
   reflection_text text,
   atlas jsonb not null default '{}'::jsonb,
+  structured_data jsonb not null default '{}'::jsonb,
+  relationship_edges jsonb not null default '[]'::jsonb,
+  map_data jsonb not null default '{}'::jsonb,
   connections jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
 
 alter table public.entries_v2 add column if not exists atlas jsonb not null default '{}'::jsonb;
+alter table public.entries_v2 add column if not exists structured_data jsonb not null default '{}'::jsonb;
+alter table public.entries_v2 add column if not exists relationship_edges jsonb not null default '[]'::jsonb;
+alter table public.entries_v2 add column if not exists map_data jsonb not null default '{}'::jsonb;
 
 alter table public.entries_v2 enable row level security;
 
@@ -36,4 +42,7 @@ create policy "Users can delete their own v2 entries" on public.entries_v2 for d
 create index if not exists entries_v2_user_date_idx on public.entries_v2 (user_id, original_date);
 create index if not exists entries_v2_user_arc_idx on public.entries_v2 (user_id, story_arc);
 create index if not exists entries_v2_user_atlas_idx on public.entries_v2 using gin (atlas);
+create index if not exists entries_v2_user_structured_idx on public.entries_v2 using gin (structured_data);
+create index if not exists entries_v2_user_relationship_edges_idx on public.entries_v2 using gin (relationship_edges);
+create index if not exists entries_v2_user_map_data_idx on public.entries_v2 using gin (map_data);
 create index if not exists entries_v2_user_connections_idx on public.entries_v2 using gin (connections);

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v4-atlas-engine';
+const CACHE_NAME = 'providence-timeline-v5-relationship-engine';
 const APP_SHELL = [
   '/',
   '/index.html',
