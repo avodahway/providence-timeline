@@ -3,18 +3,54 @@
   "short_name": "Providence",
   "description": "A private app for remembering God's providence through entries, later reflections, story arcs, scripture, and connected events.",
   "start_url": "/",
+  "id": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay", "browser"],
   "background_color": "#f7f0e5",
   "theme_color": "#183c39",
   "orientation": "portrait-primary",
   "categories": ["lifestyle", "productivity", "books"],
   "icons": [
     {
+      "src": "/icons/providence-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/providence-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/providence-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "/icons/providence-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Remember This Moment",
+      "short_name": "New Moment",
+      "description": "Open Providence Timeline ready to remember a moment.",
+      "url": "/?action=new-entry",
+      "icons": [{ "src": "/icons/providence-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Providence Map",
+      "short_name": "Map",
+      "description": "Open the relational Providence Map view.",
+      "url": "/?view=map",
+      "icons": [{ "src": "/icons/providence-icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
