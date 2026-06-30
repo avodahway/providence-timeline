@@ -276,6 +276,33 @@ Surfaces should feel handmade:
 
 Avoid visual dead zones. If a section has only text and boxes, add one quiet illustration or path motif so the screen remains recognizably Providence Timeline.
 
+## Atlas of Providence
+
+The core product metaphor is now an atlas of Providence: part heirloom journal, part explorer's map, part family Bible. Screens should feel like discovered pages from a handcrafted record of faithfulness over decades.
+
+Design rhythm:
+
+- Alternate visual weight between sections so the page reads like chapters, not rows.
+- Use oversized editorial headings where the user should pause.
+- Let supporting text breathe directly on the paper when a card is not necessary.
+- Use visual dividers, scripture-inspired ornaments, winding paths, botanical sketches, and map textures to create page turns.
+- Avoid repeating the same composition section after section.
+
+Section heroes:
+
+- Today's Reflection: illustrated journal
+- Your Story: branching path
+- Explore: antique compass
+- Journal: open notebook
+- Timeline: unfolding scroll
+- Story Arcs: tree rings or threads
+- Reflections: lantern
+- Providence Map: folded explorer's map
+
+Landmarks are the recurring symbols that will eventually appear throughout Timeline and Providence Map. Current landmark language includes answered prayer, turning point, calling, new season, provision, family milestone, ministry, suffering, and restoration.
+
+Copy should create mystery. Prefer "Some prayers are still waiting for their ending" over "No unanswered prayers." Prefer "Patterns only time can reveal" over "Journal rhythm." The user should feel invited to discover the story God has been writing all along.
+
 ## Future Relationship Model
 
 PDL should prepare visually and structurally for Providence Map without building the visualization prematurely.

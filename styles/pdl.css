@@ -601,3 +601,347 @@
     margin-block: 2.5rem;
   }
 }
+
+/* Atlas of Providence: deeper rhythm, landmarks, and editorial section heroes. */
+.journal-header {
+  padding-bottom: clamp(4.5rem, 9vw, 8rem);
+}
+
+.journal-hero {
+  position: relative;
+}
+
+.journal-hero:before {
+  content: "";
+  position: absolute;
+  left: min(-12vw, -80px);
+  top: 18%;
+  width: min(280px, 24vw);
+  height: min(280px, 24vw);
+  border: 1px solid rgba(216, 189, 101, 0.18);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, transparent 42%, rgba(49, 82, 74, 0.045) 43% 44%, transparent 45%),
+    repeating-radial-gradient(circle, transparent 0 18px, rgba(102, 115, 79, 0.045) 19px 20px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.journal-hero h1,
+.today-copy h2,
+.section-heading h2,
+.explore-heading h2,
+.journal-empty h2,
+.map-coming h2 {
+  font-family: var(--pdl-font-display);
+  letter-spacing: 0;
+}
+
+.journal-hero h1 {
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.9;
+}
+
+.today-copy h2,
+.section-heading h2,
+.explore-heading h2 {
+  max-width: 760px;
+  font-size: clamp(3.1rem, 7vw, 6.1rem);
+  line-height: 0.96;
+}
+
+.pdl-section-heading {
+  align-items: start;
+  gap: clamp(1.25rem, 3vw, 3.4rem);
+}
+
+.pdl-section-heading .pdl-visual-anchor {
+  width: clamp(112px, 15vw, 220px);
+  height: clamp(112px, 15vw, 220px);
+  margin-top: 0.35rem;
+  opacity: 0.72;
+  stroke-width: 2;
+}
+
+.story-section .pdl-section-heading,
+.explore-section .pdl-section-heading {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.story-section .pdl-section-heading .pdl-visual-anchor,
+.explore-section .pdl-section-heading .pdl-visual-anchor {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.story-section .pdl-section-heading > div,
+.explore-section .pdl-section-heading > div {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.today-section {
+  padding-top: clamp(2rem, 7vw, 7rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.story-section {
+  padding-top: clamp(5rem, 10vw, 9rem);
+}
+
+.explore-section {
+  padding-top: clamp(4.5rem, 9vw, 8rem);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.today-section:before {
+  background:
+    radial-gradient(circle at 17% 5%, rgba(140, 145, 101, 0.09), transparent 26%),
+    repeating-linear-gradient(118deg, rgba(49, 82, 74, 0.012) 0 1px, transparent 1px 52px),
+    linear-gradient(180deg, rgba(251, 247, 239, 0), rgba(255, 253, 247, 0.72) 46%, rgba(246, 240, 231, 0.28));
+}
+
+.story-section:before {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(216, 189, 101, 0.12), transparent 30%),
+    repeating-radial-gradient(circle at 10% 44%, rgba(49, 82, 74, 0.032) 0 1px, transparent 1px 28px),
+    linear-gradient(180deg, rgba(238, 227, 211, 0.2), rgba(251, 247, 239, 0.02));
+}
+
+.explore-section:before {
+  background:
+    radial-gradient(circle at 76% 28%, rgba(49, 82, 74, 0.075), transparent 28%),
+    linear-gradient(90deg, rgba(216, 189, 101, 0.06), transparent 42%),
+    linear-gradient(180deg, rgba(251, 247, 239, 0), rgba(238, 227, 211, 0.34));
+}
+
+.pdl-atlas-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+  width: min(760px, 100%);
+  margin: clamp(1.8rem, 4vw, 3rem) auto 0;
+  color: rgba(31, 52, 47, 0.76);
+}
+
+.pdl-landmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 34px;
+  border: 1px solid rgba(140, 145, 101, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.48);
+  padding: 0.42rem 0.72rem;
+  font-family: var(--pdl-font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+  box-shadow: 0 10px 22px rgba(49, 82, 74, 0.035);
+}
+
+.pdl-landmark svg {
+  width: 16px;
+  height: 16px;
+  color: var(--pdl-gold-500);
+}
+
+.pdl-atlas-note {
+  max-width: 560px;
+  margin-top: clamp(1.8rem, 4vw, 3rem);
+  border-left: 1px solid rgba(216, 189, 101, 0.56);
+  padding: 0.35rem 0 0.35rem 1.3rem;
+  color: rgba(34, 42, 39, 0.66);
+  font-family: var(--pdl-font-display);
+  font-size: clamp(1.16rem, 2vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.dashboard {
+  align-items: start;
+}
+
+.story-section .dash-card {
+  border-color: rgba(49, 82, 74, 0.055);
+  box-shadow: 0 16px 36px rgba(49, 82, 74, 0.045);
+}
+
+.story-section .dash-card:nth-child(2),
+.story-section .dash-card:nth-child(5) {
+  transform: translateY(32px);
+}
+
+.story-section .dash-card:nth-child(3) {
+  min-height: 300px;
+}
+
+.story-section .dash-card h2,
+.journal-head h2,
+.map-coming h2 {
+  font-family: var(--pdl-font-display);
+  font-size: clamp(1.65rem, 3vw, 2.65rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.explore-section .tabs {
+  margin-top: 1.2rem;
+}
+
+.explore-section .tab {
+  min-height: 124px;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(216, 189, 101, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(255, 253, 247, 0.68), rgba(246, 240, 231, 0.44));
+}
+
+.explore-section .tab.active {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(216, 189, 101, 0.24), transparent 34%),
+    linear-gradient(180deg, rgba(49, 82, 74, 0.98), rgba(23, 40, 34, 0.96));
+}
+
+.pdl-tab-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.journal-panel,
+.map-coming {
+  margin-top: clamp(1rem, 4vw, 3rem);
+}
+
+.journal-table th {
+  color: rgba(31, 52, 47, 0.68);
+  font-family: var(--pdl-font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-transform: none;
+}
+
+.row-title {
+  font-family: var(--pdl-font-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+}
+
+.timeline-card {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding-left: 3.25rem;
+}
+
+.timeline-card:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 28px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(216, 189, 101, 0.56);
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.78);
+}
+
+.timeline-card h3 {
+  font-family: var(--pdl-font-display);
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.03;
+}
+
+.empty {
+  border: 0;
+  box-shadow: none;
+}
+
+.map-coming {
+  min-height: 460px;
+  padding: clamp(2rem, 6vw, 4.5rem);
+}
+
+.map-coming .pdl-empty-illustration {
+  width: clamp(150px, 28vw, 300px);
+  height: clamp(150px, 28vw, 300px);
+}
+
+.pdl-entry-landmark,
+.pdl-table-landmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(31, 52, 47, 0.72);
+  font-family: var(--pdl-font-display);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+.pdl-entry-landmark {
+  margin: 0.8rem 0 0.4rem;
+  border-bottom: 1px solid rgba(216, 189, 101, 0.42);
+  padding-bottom: 0.25rem;
+}
+
+.pdl-entry-landmark .pdl-illustration,
+.pdl-table-landmark .pdl-illustration {
+  width: 20px;
+  height: 20px;
+  color: var(--pdl-gold-500);
+  opacity: 0.95;
+}
+
+.mini .pdl-table-landmark {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .story-section .pdl-section-heading,
+  .explore-section .pdl-section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .story-section .pdl-section-heading .pdl-visual-anchor,
+  .explore-section .pdl-section-heading .pdl-visual-anchor,
+  .story-section .pdl-section-heading > div,
+  .explore-section .pdl-section-heading > div {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .story-section .dash-card:nth-child(2),
+  .story-section .dash-card:nth-child(5) {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .journal-hero h1 {
+    font-size: clamp(3.3rem, 17vw, 5.2rem);
+  }
+
+  .today-copy h2,
+  .section-heading h2,
+  .explore-heading h2 {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .pdl-section-heading .pdl-visual-anchor {
+    width: 118px;
+    height: 118px;
+  }
+
+  .pdl-atlas-legend {
+    justify-content: flex-start;
+  }
+
+  .pdl-atlas-note {
+    text-align: left;
+  }
+
+  .explore-section .tab {
+    min-height: 106px;
+  }
+}
