@@ -303,6 +303,29 @@ Landmarks are the recurring symbols that will eventually appear throughout Timel
 
 Copy should create mystery. Prefer "Some prayers are still waiting for their ending" over "No unanswered prayers." Prefer "Patterns only time can reveal" over "Journal rhythm." The user should feel invited to discover the story God has been writing all along.
 
+## Heirloom Object Standard
+
+Providence Timeline should not read as a dashboard with vintage colors. It should feel like a beautiful object: an heirloom journal, old field notebook, devotional, and antique atlas carried through ordinary life.
+
+Layout standards:
+
+- Use title-page scale for identity and chapter moments.
+- Let large sections breathe with generous vertical space.
+- Reserve cards for actions and meaningful containment; do not box every fact.
+- Use manuscript-style rules, marginalia, and open paper fields instead of repeated rectangles.
+- Let major sections have different compositions: journal page, branching map, atlas spread, scroll, lantern note.
+
+Visual standards:
+
+- Illustrations should feel engraved or hand-drawn, never like modern app icons.
+- Background details should be nearly invisible: compass roses, cartographic rings, map grids, botanical sketches, paper grain.
+- Use forest green, cream, muted gold, aged paper, and soft sage only.
+- Prefer restraint over decoration; a single quiet mark is often stronger than several icons.
+
+Emotional standard:
+
+Ask whether the screen feels like discovering a forgotten page in an old family journal. If it still feels like software, remove boxes, enlarge the type hierarchy, and add silence around the content.
+
 ## Future Relationship Model
 
 PDL should prepare visually and structurally for Providence Map without building the visualization prematurely.
