@@ -1,0 +1,20 @@
+{
+  "name": "providence-timeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Providence Timeline native app wrapper.",
+  "scripts": {
+    "build": "node scripts/build-capacitor-web.mjs",
+    "cap:sync": "node scripts/build-capacitor-web.mjs && cap sync",
+    "cap:open:ios": "node scripts/build-capacitor-web.mjs && cap sync ios && cap open ios",
+    "cap:open:android": "node scripts/build-capacitor-web.mjs && cap sync android && cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
+    "@capacitor/ios": "^7.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.2"
+  }
+}

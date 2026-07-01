@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Providence Timeline</string>
+    <string name="title_activity_main">Providence Timeline</string>
+    <string name="package_name">com.providencetimeline.app</string>
+    <string name="custom_url_scheme">com.providencetimeline.app</string>
+</resources>

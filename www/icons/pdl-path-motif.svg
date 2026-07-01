@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 88" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Providence Path motif</title>
+  <desc id="desc">A quiet winding path representing remembered moments connected over time.</desc>
+  <path d="M18 60C74 28 126 24 172 48C220 74 254 72 300 42C348 12 400 12 450 44C506 80 562 76 622 28" stroke="#8c9165" stroke-width="7" stroke-linecap="round"/>
+  <path d="M18 60C74 28 126 24 172 48C220 74 254 72 300 42C348 12 400 12 450 44C506 80 562 76 622 28" stroke="#d8bd65" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 18"/>
+  <circle cx="18" cy="60" r="6" fill="#31524a"/>
+  <circle cx="300" cy="42" r="5" fill="#d8bd65"/>
+  <circle cx="622" cy="28" r="6" fill="#31524a"/>
+</svg>

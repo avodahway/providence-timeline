@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#183c39">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Providence Timeline">
+  <title>Install Providence Timeline</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/providence-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/providence-icon-180.png">
+  <style>
+    :root{--paper:#f6f0e7;--vellum:#fffdf7;--ink:#222a27;--muted:#6e746f;--chapel:#183c39;--gold:#b99a4f;--line:rgba(24,60,57,.14);--shadow:0 24px 70px rgba(24,60,57,.1)}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(135deg,#fffdf7,var(--paper));color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:46px 0 54px}
+    header{display:grid;gap:16px;max-width:720px;margin-bottom:28px}
+    img{width:78px;height:78px;object-fit:cover;border-radius:8px;box-shadow:0 12px 30px rgba(24,60,57,.09)}
+    h1,h2{margin:0;color:var(--chapel);font-family:Georgia,Cambria,"Times New Roman",serif;font-weight:500}
+    h1{font-size:clamp(2.5rem,7vw,4.9rem);line-height:1}
+    h2{font-size:1.65rem}
+    p{margin:0;color:var(--muted);line-height:1.7}
+    .lede{font-size:1.08rem}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .panel{border:1px solid var(--line);border-radius:8px;background:rgba(255,253,247,.82);box-shadow:var(--shadow);padding:22px}
+    ol{margin:14px 0 0;padding-left:22px;color:var(--ink);line-height:1.75}
+    li+li{margin-top:6px}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    a.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid var(--chapel);border-radius:6px;background:var(--chapel);color:#fff;text-decoration:none;font-weight:780}
+    a.secondary{background:rgba(255,253,247,.78);color:var(--chapel)}
+    .note{margin-top:22px;border-left:3px solid var(--gold);background:rgba(255,253,247,.7);padding:14px 16px}
+    @media(max-width:820px){.grid{grid-template-columns:1fr}main{padding-top:32px}header{text-align:center;justify-items:center}}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="/icons/providence-icon-180.png" alt="">
+      <h1>Install Providence Timeline</h1>
+      <p class="lede">Add Providence Timeline to your home screen or desktop so it opens like a quiet private app, not another browser tab.</p>
+    </header>
+
+    <section class="grid" aria-label="Install instructions">
+      <article class="panel">
+        <h2>iPhone or iPad</h2>
+        <ol>
+          <li>Open Providence Timeline in Safari.</li>
+          <li>Tap the Share button.</li>
+          <li>Choose <strong>Add to Home Screen</strong>.</li>
+          <li>Tap <strong>Add</strong>.</li>
+        </ol>
+      </article>
+
+      <article class="panel">
+        <h2>Android</h2>
+        <ol>
+          <li>Open Providence Timeline in Chrome.</li>
+          <li>Tap the browser menu.</li>
+          <li>Choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
+          <li>Confirm the install.</li>
+        </ol>
+      </article>
+
+      <article class="panel">
+        <h2>Desktop</h2>
+        <ol>
+          <li>Open Providence Timeline in Chrome or Edge.</li>
+          <li>Look for the install icon in the address bar.</li>
+          <li>Or open the app menu and choose <strong>Install App</strong>.</li>
+          <li>Launch it from your dock, taskbar, or applications folder.</li>
+        </ol>
+      </article>
+    </section>
+
+    <div class="note">
+      <p>The installed app still uses your same Providence Timeline account. Your entries save online when connected, and the app shell can open even when the network is unavailable.</p>
+    </div>
+
+    <div class="button-row">
+      <a class="button" href="/">Open Providence Timeline</a>
+      <a class="button secondary" href="/reset-cache.html">Refresh App Cache</a>
+    </div>
+  </main>
+</body>
+</html>

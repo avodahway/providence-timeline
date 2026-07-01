@@ -1,0 +1,10 @@
+{
+  "appId": "com.providencetimeline.app",
+  "appName": "Providence Timeline",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "capacitor"
+  }
+}

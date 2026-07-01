@@ -84,13 +84,16 @@ Needed before packaging:
 
 Current Path B checklist:
 
-- Choose wrapper: Capacitor for iOS/Android.
-- Add `package.json` and app build script.
-- Add Capacitor config with app id, app name, web directory, and production URL strategy.
-- Generate iOS and Android projects.
+- Choose wrapper: Capacitor for iOS/Android. Done.
+- Add `package.json` and app build script. Done.
+- Add Capacitor config with app id, app name, and web directory. Done.
+- Generate Android project. Done.
+- Generate iOS project. Blocked until CocoaPods is installed.
 - Prepare splash screens and store screenshots.
 - Test authentication redirects inside native webviews.
 - Create Apple Developer and Google Play Developer accounts before submission.
+
+Current native app status is documented in `NATIVE_APP.md`.
 
 ## Privacy Position
 
