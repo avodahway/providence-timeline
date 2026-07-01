@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v14-mobile-today-polish';
+const CACHE_NAME = 'providence-timeline-v15-today-exact-fixes';
 const APP_SHELL = [
   '/',
   '/index.html',
