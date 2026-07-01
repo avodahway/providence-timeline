@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v8-install-guide';
+const CACHE_NAME = 'providence-timeline-v9-today-sky';
 const APP_SHELL = [
   '/',
   '/index.html',
