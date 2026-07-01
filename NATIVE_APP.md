@@ -6,9 +6,10 @@ Providence Timeline now has a Capacitor foundation for native mobile apps.
 
 - Capacitor is installed.
 - Android project is generated in `android/`.
+- iOS project is generated in `ios/`.
 - The app web bundle is generated into `www/`.
 - Android has been synced successfully.
-- iOS is not generated yet because CocoaPods is not installed in the local Mac environment.
+- iOS has been generated, but final native dependency sync needs the full Xcode app selected on this Mac.
 
 ## App Identity
 
@@ -50,26 +51,22 @@ pnpm exec cap open ios
 
 ## iOS Setup Blocker
 
-Capacitor needs CocoaPods before it can generate/sync the iOS project.
+Capacitor now has CocoaPods available, but `pod install` needs the full Xcode app, not only Apple's command-line tools.
 
-Recommended local setup:
+Install Xcode from the Mac App Store if needed. Then open Xcode once and accept any first-run prompts.
+
+After Xcode is installed, select it for command-line builds:
 
 ```bash
-brew install cocoapods
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -license accept
 ```
 
-Then generate iOS:
+Then sync and open iOS:
 
 ```bash
-pnpm exec cap add ios
 pnpm exec cap sync ios
 pnpm exec cap open ios
-```
-
-If Homebrew is not available, install Homebrew first from:
-
-```text
-https://brew.sh
 ```
 
 ## Android Next Step
@@ -84,7 +81,7 @@ From Android Studio, let Gradle finish syncing, then run the app on an emulator 
 
 ## iPhone Next Step
 
-After CocoaPods is installed and `ios/` is generated, open the project in Xcode. You will need:
+After Xcode is installed and selected, open the project in Xcode. You will need:
 
 - Xcode installed
 - An Apple ID signed into Xcode

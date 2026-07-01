@@ -88,7 +88,8 @@ Current Path B checklist:
 - Add `package.json` and app build script. Done.
 - Add Capacitor config with app id, app name, and web directory. Done.
 - Generate Android project. Done.
-- Generate iOS project. Blocked until CocoaPods is installed.
+- Generate iOS project. Done.
+- Finish iOS native dependency sync. Blocked until full Xcode is installed/selected.
 - Prepare splash screens and store screenshots.
 - Test authentication redirects inside native webviews.
 - Create Apple Developer and Google Play Developer accounts before submission.
