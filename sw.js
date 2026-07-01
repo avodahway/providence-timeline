@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v10-native-today';
+const CACHE_NAME = 'providence-timeline-v11-sky-atmosphere';
 const APP_SHELL = [
   '/',
   '/index.html',
