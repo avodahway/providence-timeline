@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v17-native-reference-fit';
+const CACHE_NAME = 'providence-timeline-v18-profile-lockup';
 const APP_SHELL = [
   '/',
   '/index.html',
