@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v20-reference-match';
+const CACHE_NAME = 'providence-timeline-v21-reference-scale';
 const APP_SHELL = [
   '/',
   '/index.html',
