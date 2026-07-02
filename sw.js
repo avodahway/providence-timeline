@@ -1,4 +1,4 @@
-const CACHE_NAME = 'providence-timeline-v23-scroll-flow';
+const CACHE_NAME = 'providence-timeline-v24-fixed-nav-bugfix';
 const APP_SHELL = [
   '/',
   '/index.html',
